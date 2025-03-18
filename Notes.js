@@ -36,4 +36,36 @@ else {
     }
 */
 
+/*
+    if(condition1){
+        // code to execute if condition1 is true
+    }
+    else if(condition2){
+        // code to execute if condition1 is false and condition2 is true
+    }
+    else{
+        // code to execute if condition1 and condition2 is false
+    }
+*/
 
+/*
+    // Nested if-else --> condition under condition
+    if(condition1){
+        if(condition2){
+            // code to execute if both conditions are true
+        }
+        else{
+            // code to execute if condition2 is false
+        }
+    }
+    else{
+        // code to execute if condition1 is false
+    }
+*/
+
+/*
+    logical not --> !
+    use for toggling boolean value(true and false)
+
+    ternary condition --> condition ? true : false
+*/
