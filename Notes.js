@@ -109,5 +109,35 @@ console.log(a1)
 console.log(a1.pop())
 console.log(a1)
 
+/*
+Loops
+
+1. for-of loop --> use for traverse array and string
+for(type var_name of array_names){
+    // code to execute for each element}
+
+2. while loop
+initialize a loop variable
+while(loop condition){
+    // code to execute while loop condition is true
+    // change the value of loop variable
+    }
+
+3. for loop
+for(declare loop variable;loop condition;change loop variable){
+    // code to execute for each iteration until loop condition is false}
+
+4. break and continue
+break --> break the loop and stop executing the remaining code inside the loop
+continue --> continue the next iteration of the loop without executing the remaining code inside the loop
+*/
+const a2 = [1, 2, 3, 4, 5]
+const s2 = 'hello'
+for (let a of a2) {
+    console.log(a)
+}
+for (let s of s2) {
+    console.log(s)
+}
 
 
