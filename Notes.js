@@ -141,3 +141,62 @@ for (let s of s2) {
 }
 
 
+/*
+    Object --> Object can be used to store multiple types of data
+    type object_name = {
+        key: value
+    }
+    here the value can be any data type . even array and object.
+
+    to access object properties
+    1. dot notation --> object_name.key
+    2. bracket notation --> object_name['key'] here the key must inside single or double quotation
+    when the key has special character,space or store in a variable then use bracket notation
+
+    to modify object property
+    object_name.key = new_value
+    object_name['key'] = new_value
+
+    to add new property to an object
+    object_name.new_key = new_value
+    object_name['new_key'] = new_value
+
+    to delete property from an object
+    delete object_name.key
+    delete object_name['key']
+
+    Object.keys() --> return an array of all the keys of an object
+    Object.values() --> return an array of all the values of an object
+    Object.entries() --> return an 2d array of all the key-value pairs of an object
+
+    to check a key is in the object or not
+    'key' in object_name
+
+    to check a key is it's own property or child property
+    object_name.hasOwnProperty('key')
+
+
+
+    Object.keys() are case sensitive
+    Object.values() and Object.entries() are not case sensitive
+
+    // traverse through object
+    for (let key of Object.keys(object_name)) { // after using Object.keys()
+        console.log(key, object_name[key])
+    }
+    for (let [key, value] of Object.entries(object_name)) {
+        console.log(key, value)
+    }
+    for (let key in object_name) { // used to traverse objects
+        console.log(key, object_name[key])
+    }
+    
+    // seal vs freeze
+    // seal object --> prevent adding new properties, deleting existing properties, but changing existing property values is allowed
+    Object.seal(object_name)
+    // freeze object --> prevent adding new properties, deleting existing properties, changing existing property values
+    Object.freeze(object_name)
+    
+    
+*/
+
