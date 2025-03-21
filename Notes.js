@@ -109,9 +109,8 @@ console.log(a1)
 console.log(a1.pop())
 console.log(a1)
 
+//Chapter 7 - Loops
 /*
-Loops
-
 1. for-of loop --> use for traverse array and string
 for(type var_name of array_names){
     // code to execute for each element}
@@ -141,6 +140,7 @@ for (let s of s2) {
 }
 
 
+// Chapter 8 - Object
 /*
     Object --> Object can be used to store multiple types of data
     type object_name = {
@@ -199,4 +199,28 @@ for (let s of s2) {
     
     
 */
+
+// Chapter 9 - Functions
+/*
+    Function declaration --> function function_name(parameters){
+        // code to execute
+    }
+
+    Function expression --> const function_name = function(parameters){
+        // code to execute
+    }
+    
+    to return something from function --> return value; value can be any data type even array and object
+    if a function has not return keyword --> then it returns undefined
+    
+    Function call --> function_name(arguments) ( outside the function )
+    parameters and arguments can be any data type even array and object
+    Function hoisting --> function declaration is hoisted to the top of the script, function expression is not hoisted
+    Function arguments --> arguments object is an array-like object that contains the values of the arguments passed to a function
+
+    if the function has 2 parameters but we give 4 arguments when calling function then it takes first two argument and to work with all the four arguments we can use arguments.
+
+
+*/
+
 
