@@ -1,3 +1,5 @@
+// .toFixed() convert number to string when converting.
+
 // Chapter 5 -- conditional
 
 /*
@@ -222,5 +224,13 @@ for (let s of s2) {
 
 
 */
+
+function swapNumber(num1, num2) {
+    const temp = num1
+    num1 = num2
+    num2 = temp
+    return [num1, num2];
+}
+console.log(swapNumber(7,10))
 
 
