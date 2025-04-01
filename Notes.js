@@ -279,11 +279,32 @@ ES6
     * Array Destruction --> type [value1, value2] = array_name.
     * function Destruction --> if we return function value in array or object, we can destruct the value using array and object destruction like const [a,b] = sum(2,3)
     * we can put default values when destruction using = --> key_name = default value
-    * using as function argument --> we can use it when the function parameter is in object or array. when object we can simpley use key_name : value . by this we can give argument without the order of parameters
+    * using as function argument --> we can use it when the function parameter is in object or array. when object we can simply use key_name : value . by this we can give argument without the order of parameters
     * skipping value in array destruction --> use , like [,second,,forth] = array_name
 
-6.
+6. Rest Operator
+    * Rest parameter -->...rest_parameter is used when we don't know how many arguments a function will receive.
+    * spread operator -->...spread_operator is used when we want to expand an array or object into multiple arguments or elements.
+    * to keep multiple arguments,properties or element of function,object or array
+    * also useful when we don't know how many arguments,properties or element is in the function,object or array
+    * also useful when destructing value from array
 
+7. Spread operator
+    * spread operator -->...spread_operator is used when we want to expand an array or object into multiple arguments or elements.
+    * spread operator is used to copy array or object into new array or object.
+    * to have max number from some parameter Math.max(param1, param2,)
+    * to get max number from array Math.max(...arr)
+    * to merge array or object into new array or object
+    * to add new element when copying from array or object
+    * to direct copy a array into another array , it has some referenced issue to solve it use spread operator
+
+8. import and export
+    * import --> to import function, variable, class, or module from another file.
+    * export --> to export function, variable, class, or module to another file.
+    * to export something from a file or module use export keyword
+    * to import that use { } and destruction to import that
+    * use default export keyword to export thing by default. it will no need destruction and we can use any name to import that but one module or file can have only one default export
+    * we can change the export component by using as keyword like sum as add
 */
 console.log(`the sum of 2 + 3 is ${2 + 3}`)
 const user = { name: 'John', age: 23 }
@@ -311,6 +332,29 @@ function sumAandB([a, b]){
     console.log(a+b)
 }
 sumAandB([5, 10])
+
+// Rest operator
+const rest = [1,2,3,4,5,6,7,7]
+const [r1, r2, ...r3] = rest
+console.log(r3)
+
+const restObj = {name: 'John', age:34, height:150, weight: 90,profession: 'teacher'}
+const {name : ro1,age : ro2,...ro3} = restObj
+console.log(ro3)
+
+const spread = [...rest,8,9]
+console.log(spread)
+
+const spreadObj = { ...restObj, hobby: 'gardening' }
+
+console.log(spreadObj)
+const mergeArray =[...rest,...spread]
+console.log(mergeArray)
+
+
+
+
+
 
 
 
