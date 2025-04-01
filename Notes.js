@@ -1,4 +1,15 @@
+/*
+let vs const --> block scope
+let --> can be reassigned and modified but can't be redeclared
+const --> can't reassigned or can't be redeclared or modified 
+
+but for arrays and objects the const can be modified but can't be redeclared or can't be reassigned
+like push,pop and changing the value is allowed
+
+*/
 // .toFixed() convert number to string when converting.
+// any calculation using undefined results in NaN
+console.log(12 / undefined)
 
 // Chapter 5 -- conditional
 
@@ -212,6 +223,19 @@ for (let s of s2) {
         // code to execute
     }
     
+    array function
+    const array_function = (parameter) => {
+        // code to execute
+    }
+    if the array function is one line then the return keyword doesn't need to return anything.but if it is multiline then use bracket and use return keyword to return something
+    const array_function_one_line = (parameter) => do work
+    for object in one line
+    const array_function_one_line = (parameter) =>({key: value}) have to use first bracket
+    // array function mostly use for callback and simple functions and array method like map and filter. it doesn't this keyword on it's own inherited from parent scope and also doesn't have argument or constructor
+
+   
+
+    
     to return something from function --> return value; value can be any data type even array and object
     if a function has not return keyword --> then it returns undefined
     
@@ -222,7 +246,12 @@ for (let s of s2) {
 
     if the function has 2 parameters but we give 4 arguments when calling function then it takes first two argument and to work with all the four arguments we can use arguments.
 
-
+    // default parameters --> where we set a default parameter in case the function doesn't have any arguments
+    function add(num1 = 0, num2 = 0) {
+        return num1 + num2
+    }
+    console.log(add(10, 5)) // 15
+    console.log(add()) // 0
 */
 
 function swapNumber(num1, num2) {
@@ -231,6 +260,59 @@ function swapNumber(num1, num2) {
     num2 = temp
     return [num1, num2];
 }
-console.log(swapNumber(7,10))
+console.log(swapNumber(7, 10))
+
+/* 
+ES6
+1.  use let and const instead of var
+
+2.  default parameters
+
+3.  template literals --> `string ${expression}` here `` is called backtick. we can use it for multiline string.
+    we can call function , use ternary for condition, can work with array and object and we can also write html template using template literals
+
+4. arrow functions
+
+5. Destruction
+    * Object Destruction --> type {key_name1, key_name2} = object_name. 
+                            if i want to change key name when destruction use : --> key_name1 : new_key_name
+    * Array Destruction --> type [value1, value2] = array_name.
+    * function Destruction --> if we return function value in array or object, we can destruct the value using array and object destruction like const [a,b] = sum(2,3)
+    * we can put default values when destruction using = --> key_name = default value
+    * using as function argument --> we can use it when the function parameter is in object or array. when object we can simpley use key_name : value . by this we can give argument without the order of parameters
+    * skipping value in array destruction --> use , like [,second,,forth] = array_name
+
+6.
+
+*/
+console.log(`the sum of 2 + 3 is ${2 + 3}`)
+const user = { name: 'John', age: 23 }
+const home = `person: ${user.name},page: ${user.age}`
+console.log(home)
+
+// Destruction
+const user1 = {name: 'John', age: 35,hobby : 'swimming' }
+const { name, age, hobby: passion, profession= 'N/A'} = user1
+console.log(name, age, passion,profession)
+const userArray1 = [1,2,3,4,5]
+const [a,b] = userArray1
+console.log(a, b)
+const [a11, , c11, , e11] = userArray1
+console.log(a11,c11,e11)
+
+function userProfile({ name, age, hobby, profession }) {
+    console.log(`I am ${name} and ${age} years old.I am a ${profession} and my hobby is ${hobby}`)
+
+}
+
+userProfile({age:35,profession:'teacher',name: 'John',hobby: 'Fishing'})
+
+function sumAandB([a, b]){
+    console.log(a+b)
+}
+sumAandB([5, 10])
+
+
+
 
 
