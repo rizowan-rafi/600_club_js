@@ -305,6 +305,33 @@ ES6
     * to import that use { } and destruction to import that
     * use default export keyword to export thing by default. it will no need destruction and we can use any name to import that but one module or file can have only one default export
     * we can change the export component by using as keyword like sum as add
+    * package.json --> {"type":"module"}
+
+9. Array Method
+    * map --> create a new array by performing a transformation on each element of the original array.it works with every element of the array and return a new array
+    * filter --> create a new array with all elements that pass the condition implemented by the provided function.it will work on every element of the array and check the condition. all the elements that fulfill the condition form the array and return a new array. if no element fulfills the condition then it returns empty array
+    * forEach --> it will work on every element of the array but doesn't return anything
+    * find --> it will work on every element of the array and return the first element that fulfills the condition.if no element fulfills the condition then it returns undefined
+    * findIndex --> it will work on every element of the array and return the first element's index that fulfills the condition.if no element fulfills the condition then it returns -1
+    * some --> it will work on every element of the array and check the condition.if any of the element passes the condition,it return true else false
+    * every --> it will work on every element of the array and check the condition.if all the element pass the condition then it returns true else false
+    * flat --> to convert a nested array to a single flatten array.return an array
+    * reduce --> it will reduce all the elements of the array into a single value.
+                arrName.reduce((accumulator,currentValue) => doSomeWork,intialValue)
+                here (accumulator,currentValue) => doSomeWork is a callback function
+    * sort --> it will sort the elements of the array in ascending order. it will return a new array.but it will sort using string which is not compatible for numbers
+                to sort the elements use a callback function called compare function
+                compareFunction should return -1, 0, or 1. if -1 then a comes before b, if 0 then a equals b, if 1 then a comes after b
+                sort acceding way --> arrName.sort((a,b)=>a-b)
+                sort descending way --> arrName.sort((a,b)=>b-a)
+    * reverse --> arrName.reverse() to reverse the array.
+    * concat --> to merge two or more arrays or objects. it will return a new array.
+    * slice --> using this we can slice any numbers of elements from an array. it will return a new array with the slice elements and main array will not change
+                arrName.slice(initialIndex, lastIndex+1)
+    * splice --> using this we can delete any number of elements from an array from any position and add elements on that position but it will return array of deleted element and main array will be changed
+                arrName.splice(initialIndex, number of elements to delete from that index, the elements that i want to add on that index)
+    three parameter in array method --> array/object_name.method(element,index,full_array/full_object)
+    like numbers.map(number,index,numbers)
 */
 console.log(`the sum of 2 + 3 is ${2 + 3}`)
 const user = { name: 'John', age: 23 }
@@ -351,7 +378,23 @@ console.log(spreadObj)
 const mergeArray =[...rest,...spread]
 console.log(mergeArray)
 
+//Array Method
 
+const numbers = [1,2,3,4,5]
+const numbersMap = numbers.map(number => console.log(number*2))
+const numbersFilter = numbers.filter(number => number % 2 === 0)
+numbers.forEach(number => console.log(number))
+console.log(numbers.find(number => number === 3))
+
+const numbersParameter = numbers.map((number,index,numbers)=>{return `${number} is in ${index} index and ${numbers.length} length`})
+console.log(numbersParameter)
+
+console.log(numbers.some(number => number>3))
+console.log(numbers.every(number => number>3))
+
+const nested = [1,2,3,[4,5,[6,7,[8,9]]]]
+const single = nested.flat(3)
+console.log(single)
 
 
 
