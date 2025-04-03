@@ -332,6 +332,33 @@ ES6
                 arrName.splice(initialIndex, number of elements to delete from that index, the elements that i want to add on that index)
     three parameter in array method --> array/object_name.method(element,index,full_array/full_object)
     like numbers.map(number,index,numbers)
+
+    String Methods
+    * charAt --> it will return the character at the specified index in the string.
+    * String is immutable and array is mutable.both are case sensitive. we can't change a string after declaration it but we can redeclare the string and we can change array elements.
+    * String is like array in many ways like strName.length, strName[index],strName.includes(char),strName.indexOf(char),strName.charAt(index)
+    * to convert lower case --> strName.toLowerCase() and upper case --> strName.toUpperCase()
+    * to remove whitespace --> strName.trim()
+    * to have a substring from a string --> strName.slice(initialIndex,lastIndex+1)
+    * to have a substring from a string --> strName.substring(initialIndex,lastIndex+1)
+    * to convert string to array --> strName.split(how we want to split the string)
+    * to convert array to string --> arrName.join(how we want to join the array)
+    * to concat the string --> str1Name.concat(str2Name) or str1Name + str2Name + str3Name
+    * substring vs slice --> parameter swapping(if start>end substring swap them but slice give empty string) and handling negative index(substring treats as 0 index but slice counts from the end of the string)
+    * to repeat a string many times --> strName.repeat(how many times to repeat)
+    * to convert any data type to string --> varName.toString()
+    * to replace any part of a string with anything(first occurrence) --> strName.replace(what to replace,what to place instead of that).return a new string
+    * to replace any part of a string with anything(all occurrence) --> strName.replaceAll(what to replace,what to place instead of that).return a new string
+    * to reverse a string -->
+            Method 1 : 
+            const reverse = ""
+            const str = 'hello world
+            for(const i of str){
+                reverse = i + reverse
+            }
+            
+            Method 2 :
+            const reverse = str.split('').reverse().join('')
 */
 console.log(`the sum of 2 + 3 is ${2 + 3}`)
 const user = { name: 'John', age: 23 }
@@ -396,6 +423,27 @@ const nested = [1,2,3,[4,5,[6,7,[8,9]]]]
 const single = nested.flat(3)
 console.log(single)
 
+// String method
+
+const str = 'Hello World'
+console.log(str.charAt(3))
+console.log(str[3])
+console.log(str)
+console.log(str.includes('World'))
+console.log(str.indexOf('World'))
+// str = 'people'  // redeclaration the string is allowed
+// console.log(str)
+// str[1] = 'h' // changing the string is not allowed
+// console.log(str)
+
+let reverse = '';
+for(let i of str)
+    reverse = i + reverse
+
+console.log(reverse)
+
+const reverse1 = str.split('').reverse().join('')
+console.log(reverse1)
 
 
 
