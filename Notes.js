@@ -359,6 +359,7 @@ ES6
             
             Method 2 :
             const reverse = str.split('').reverse().join('')
+
 */
 console.log(`the sum of 2 + 3 is ${2 + 3}`)
 const user = { name: 'John', age: 23 }
@@ -445,6 +446,90 @@ console.log(reverse)
 const reverse1 = str.split('').reverse().join('')
 console.log(reverse1)
 
+/*
+JS Core Concept
+
+1. Dynamic typing language
+    * JavaScript is dynamically typed language. This means that a variable can hold a value of any type during its lifetime.it will detect the type by checking it's value.that's why it is also called loosely typed language. 
+    * example: let name = 'John'; name = 23; // it will be fine
+    * demerits --> sometimes it is hard to debug the code 
+    * merits --> easy to write code.
+
+2. primitive vs non-primitive data types
+    * Primitive data types: string, number, boolean. 
+    * Non-primitive data types: object, function, array.
+    * primitive data type pass the copy of the value in function but non-primitive data type pass the reference/memory address of the value in function.that's why primitive data type is called pass by value and non-primitive data type is called pass by reference
+    * if we copy a primitive data type variable value to another variable. it will give the copy of the variable value.both of their memory location will be different
+    * if we copy a non-primitive data type variable value to another variable.(without spread operator ...) it will give the reference/memory address of the variable value.both of their memory location will be same.as a result if you change any of the variable content both of the variable will be changed.
+
+3. null and undefined
+    * when undefined :: it is a value in JavaScript that represents the absence of any value.
+    * when null :: it is a value in JavaScript that represents the intentional absence of any  value.
+    * when the undefined value is occurs
+        # when we declare a variable with assigning any value
+        # when we don't return any value from a function
+        # when we passed less argument than the parameter
+        # when we try to access a property of an object which is not present
+        # when we use return statement but doesn't return anything
+        # when we try to access a object property which is not available
+        # when we try to access index which is not available in array
+        # when we delete an element from array
+        # we can also assign a variable undefined
+    
+    * null vs undefined
+        # null and undefined both represents the absent of value but null is intentional and undefined is indicator given by the system.
+        # null's type object and undefined's type undefined
+
+4. truthy vs falsy
+    * Truthy values: true, non-zero number, non-empty string, non-empty array, non-empty object, non-null boolean value.
+    * Falsy values: false, 0, ''(empty string), undefined, null, NaN.
+    * not(!) vs double not(!!) --> not(!) is used to check if a value is falsy or not.double not(!!) is used the check a value's boolean value
+
+5. ==(check only value using type coercion) vs ===(check both value and type)
+    * Nan == Nan is false
+    * when non-primitive == primitive. it convert non-primitive to primitive using toString() then compare value
+    * when non-primitive == non-primitive. it doesn't compare value.rather it compares reference. if the reference/memory location is same then true,else false
+    * when type coercion [],{} becomes false
+
+6. Callback functions
+    * a function that is passed as an argument to another function and is called (invoked) when that function is finished executing.
+    * example: setTimeout(), setInterval(), forEach(), map(), filter(), reduce(), Promise.resolve().then()
+    * it is function under a function . which will execute after the first function do some work
+
+7. Scope
+    * code block --> if there is one or many line code inside second bracket ({ }) then it is called code block. {code}
+    * global scope --> if we access a code or variable from anywhere(any function or block) in the code then it is global scope
+    * function scope --> we can access only in a function block like parameter and variable declare inside the function
+    * block scope --> we can access in a block . that's mean {  code block }.like loop,condition or function
+    * lexical scope --> inner block can access outer block code and variables. but outer block can't access inner block code and variables
+    * scope chain --> when we want to access a code or variable, it will use scope chain to find it.first it searches the code or variables in inner block/scope, then outer block/scope,then global scope/block
+*/
+
+// Callback function
+
+const add = (a,b, callback) => {
+    const result = a + b
+    callback(result)
+}
+
+function printResult(value){ // this is callback function
+    console.log(`The result is ${value}`)
+}
+
+add(5, 10, printResult)
+
+// scope
+let global = 23; // global scope as it can accessible by any block or anywhere in the code
+
+function outerFunction() { 
+    let outer = 45; // function scope as it can accessible only inside the function
+    function innerFunction() { 
+        let inner = 67; // block scope as it can accessible only inside the block
+        console.log(global) // 23 // it used scope chain to find global
+        console.log(outer) // 45 // it used scope chain to find outer
+        console.log(inner) // 67 // here inner is only accessible by innerFunction but not outerFunction but outer can accessible by both innerFunction and outerFunction. this is lexical scope
+    }
+}
 
 
 
