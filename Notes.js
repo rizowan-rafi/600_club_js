@@ -367,60 +367,60 @@ const home = `person: ${user.name},page: ${user.age}`
 console.log(home)
 
 // Destruction
-const user1 = {name: 'John', age: 35,hobby : 'swimming' }
-const { name, age, hobby: passion, profession= 'N/A'} = user1
-console.log(name, age, passion,profession)
-const userArray1 = [1,2,3,4,5]
-const [a,b] = userArray1
+const user1 = { name: 'John', age: 35, hobby: 'swimming' }
+const { name, age, hobby: passion, profession = 'N/A' } = user1
+console.log(name, age, passion, profession)
+const userArray1 = [1, 2, 3, 4, 5]
+const [a, b] = userArray1
 console.log(a, b)
 const [a11, , c11, , e11] = userArray1
-console.log(a11,c11,e11)
+console.log(a11, c11, e11)
 
 function userProfile({ name, age, hobby, profession }) {
     console.log(`I am ${name} and ${age} years old.I am a ${profession} and my hobby is ${hobby}`)
 
 }
 
-userProfile({age:35,profession:'teacher',name: 'John',hobby: 'Fishing'})
+userProfile({ age: 35, profession: 'teacher', name: 'John', hobby: 'Fishing' })
 
-function sumAandB([a, b]){
-    console.log(a+b)
+function sumAandB([a, b]) {
+    console.log(a + b)
 }
 sumAandB([5, 10])
 
 // Rest operator
-const rest = [1,2,3,4,5,6,7,7]
+const rest = [1, 2, 3, 4, 5, 6, 7, 7]
 const [r1, r2, ...r3] = rest
 console.log(r3)
 
-const restObj = {name: 'John', age:34, height:150, weight: 90,profession: 'teacher'}
-const {name : ro1,age : ro2,...ro3} = restObj
+const restObj = { name: 'John', age: 34, height: 150, weight: 90, profession: 'teacher' }
+const { name: ro1, age: ro2, ...ro3 } = restObj
 console.log(ro3)
 
-const spread = [...rest,8,9]
+const spread = [...rest, 8, 9]
 console.log(spread)
 
 const spreadObj = { ...restObj, hobby: 'gardening' }
 
 console.log(spreadObj)
-const mergeArray =[...rest,...spread]
+const mergeArray = [...rest, ...spread]
 console.log(mergeArray)
 
 //Array Method
 
-const numbers = [1,2,3,4,5]
-const numbersMap = numbers.map(number => console.log(number*2))
+const numbers = [1, 2, 3, 4, 5]
+const numbersMap = numbers.map(number => console.log(number * 2))
 const numbersFilter = numbers.filter(number => number % 2 === 0)
 numbers.forEach(number => console.log(number))
 console.log(numbers.find(number => number === 3))
 
-const numbersParameter = numbers.map((number,index,numbers)=>{return `${number} is in ${index} index and ${numbers.length} length`})
+const numbersParameter = numbers.map((number, index, numbers) => { return `${number} is in ${index} index and ${numbers.length} length` })
 console.log(numbersParameter)
 
-console.log(numbers.some(number => number>3))
-console.log(numbers.every(number => number>3))
+console.log(numbers.some(number => number > 3))
+console.log(numbers.every(number => number > 3))
 
-const nested = [1,2,3,[4,5,[6,7,[8,9]]]]
+const nested = [1, 2, 3, [4, 5, [6, 7, [8, 9]]]]
 const single = nested.flat(3)
 console.log(single)
 
@@ -438,7 +438,7 @@ console.log(str.indexOf('World'))
 // console.log(str)
 
 let reverse = '';
-for(let i of str)
+for (let i of str)
     reverse = i + reverse
 
 console.log(reverse)
@@ -507,12 +507,12 @@ JS Core Concept
 
 // Callback function
 
-const add = (a,b, callback) => {
+const add = (a, b, callback) => {
     const result = a + b
     callback(result)
 }
 
-function printResult(value){ // this is callback function
+function printResult(value) { // this is callback function
     console.log(`The result is ${value}`)
 }
 
@@ -521,15 +521,73 @@ add(5, 10, printResult)
 // scope
 let global = 23; // global scope as it can accessible by any block or anywhere in the code
 
-function outerFunction() { 
+function outerFunction() {
     let outer = 45; // function scope as it can accessible only inside the function
-    function innerFunction() { 
+    function innerFunction() {
         let inner = 67; // block scope as it can accessible only inside the block
         console.log(global) // 23 // it used scope chain to find global
         console.log(outer) // 45 // it used scope chain to find outer
         console.log(inner) // 67 // here inner is only accessible by innerFunction but not outerFunction but outer can accessible by both innerFunction and outerFunction. this is lexical scope
     }
 }
+
+/*
+Build in Object and Method
+1. Type Constructor 
+    * string to number --> Number(string) / +string
+    * number to string --> String(num) / num + ''
+    * to boolean --> Boolean(value)
+    * Function contructor --> new Function(parameter, code)
+    * object constructor --> new Object()
+
+2. build in Math method
+    * Math.min(a,b,c,d)
+    * Math.max(a,b,c,d)
+    * Math.PI
+    * Math.abs(a)
+    * Math.round(a) --> nearest integer
+    * Math.floor(a)
+    * Math.ceil(a)
+    * Math.random() --> between 0 and 1
+    * Math.random() * (a-b)+b --> between a and b where a>b (floor)
+    * Math.floor(Math.random() * (max - min + 1)) + min --> between a(exclusive) and b(inclusive) where a>b(integer)
+    * Math.random() < 0.5 --> to generate random boolean(true or false)
+
+3. build in Date method
+    * new Date() --> it is a object
+    * new Date(year, month, date, hours, minutes, seconds, milliseconds)
+    * new Date().getFullYear()  new Date().getMonth()  new Date().Day()  new Date().Hours()  new Date().Minutes()  new Date().Seconds()
+    * we can set by setFullYear() setMonth() setDate(). also hours,minutes and seconds
+    * to have time difference between 2 date object --> d1-d2 / (1000*60*60*24) . here d1-d2 is in millisecond.
+    * new Date().toLocaleString([locales], [options]);
+
+4. Regular Expression(RegEx) --> used to find or replace or check a portion of text in a string
+    * /text/ or new RegExp(text)
+    * .test(string) --> return true or false to check the text is in the string or not
+    * .replace(/word to replace/g,work that will in the replacement)
+    * .match(string) --> return the match part or null
+    * 
+
+5. Set
+    * new Set([1,2,3,3,4,5]) --> it will remove duplicate values and keep only one copy of each value
+    * new Set().add(value) --> to add value in set
+    * new Set().delete(value) --> remove value
+    * new Set().has(value) --> to check if value is in the set
+    * [... new Set([a,c,d,e,f,g,h,i,j,])] --> to remove duplicate from array
+    * .size --> to have the size of the set
+    * it works with values not index
+
+6. Map
+    * new Map([[key1, value1], [key2, value2],...])
+    . new Map().set(key, value)
+    . new Map().get(key) --> to get value
+    . new Map().delete(key) --> to delete 
+    . new Map().has(key) --> to check if key is in the map
+    * it works with key and value pair
+    * .size --> length of the map
+     
+   
+*/
 
 
 
