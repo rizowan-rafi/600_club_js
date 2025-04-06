@@ -585,8 +585,19 @@ Build in Object and Method
     . new Map().has(key) --> to check if key is in the map
     * it works with key and value pair
     * .size --> length of the map
-     
-   
+
+*/
+
+/*
+Error Handling
+1. type validation
+    * use typeof for number,string and object and Array.isArray(arrName) for array
+2. Types of errors
+    * syntax error --> when the syntax is wrong like missing a bracket,colon,comma,spelling mistake,missing initialization in const variable.
+    * logical error --> it is a error that the programmer makes when writing the code.it doesn't show on error message.it occurs when your logic isn't correct
+    * type error --> when we use a operation which is not built for that type of value like .toUpperCase() is for string . if we use it in number.Or use dot notion in string or number which is used in object.Or call a variable rather that function
+    * reference --> when the compiler doesn't find the reference of the variable or code.like if we use a variable in our code which is not defined.then it will give reference error.
+    * range error --> when any number exceed it's valid range like .toFixed() can work between 0 to 100. if we give it like .toFixed(101) then it will give range error
 */
 
 
