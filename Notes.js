@@ -600,6 +600,107 @@ Error Handling
     * range error --> when any number exceed it's valid range like .toFixed() can work between 0 to 100. if we give it like .toFixed(101) then it will give range error
 */
 
+/*
+Asynchronous JS
+1. JavaScript is a single-threaded language.it works synchronously.means it works line by line.it can only do one task at a time.
+2. setTimeout vs setInterval --> asynchronous task in synchronous js
+    * setTimeout(callback,delay) --> it will wait for the specified milliseconds and then execute the function once.here delay is not mandatory.if not given it will take 0 milliseconds to execute
+    * setInterval(callback,delay) --> it will execute the function repeatedly at specified milliseconds.
+    * both are used to run a function after a specified time. but setInterval will keep running until clearInterval() is called.
+    * setTimeout(() => { console.log('after 2 seconds') }, 2000)
+    * setInterval(() => { console.log('after every 3 seconds') }, 3000)
+    * setInterval() return a intervalId. to stop setInterval() --> clearInterval(intervalId) 
+    * setTimeout(() => { clearInterval(intervalId) }, 10000) // to stop interval after 10 seconds
+
+3. how single threaded javascript handle asynchronous tasks
+    call stack --> LIFO and execute synchronous tasks
+    web APIs --> it is built-in JavaScript objects or methods that provide functionality that JavaScript doesn't have built-in. like DOM manipulation, AJAX, setTimeout, setInterval, etc.
+    callback queue --> FIFO and execute asynchronous tasks. it will put the callback function into callback queue when it is ready to execute.
+    event loop --> it checks the call stack is empty or not. if not it will wait until call stack is empty. then it will check the callback queue. if callback queue is not empty it will execute the first task from callback queue.
+
+4. characteristics of js
+    * single threaded
+    * High abstraction
+    * Dynamically typed
+    * prototype-based
+    * multi-paradigm
+    * JIT compiler
+    * Garbage collection
+   
+*/
+
+/*
+JSON FETCH PROMISE
+    1. JSON --> Javascript Object Notation
+        * to convert object to JSON --> JSON.stringify(obj_Name)
+        * to convert JSON to object --> JSON.parse(JSON_Data)
+        * JSON key and value have to be in double quotes.there is no function in json data but object has.
+        * JSON is a way to send data in an organized and readable format.
+    
+    2. Promises
+        * Promise is an object that represents the eventual completion or failure of an asynchronous operation.
+       * Promise has 3 state --> pending,resolve,reject
+       * create a new Promise --> new Promise((resolve,reject)=>{if promise fulfilled then resolve() else reject()})
+       * after creating the Promise, it will return a promise object.there are 3 method to catch it. 1. .then() --> when promise is resolved, 2. .catch() --> when promise is rejected, 3. finally() --> it will run whenever promise resolves or rejects. they are callback function
+       * promise is used to get data from the server asynchronously.as it can take some time or data fetch can be failed.
+       * Promise.all([p1,p2,p3]) --> if all the promises are fulfilled,then it will return all the resolved as an array
+    
+    3. Fetch
+       * fetch(url) --> it is used to fetch data from the server. it returns promise.
+       * fetch(url).then(response=>response.json()) --> it will parse the response and return as json object.
+       * api --> it is a way to communicate with two different software
+       * url --> it is address to find some resource from the server
+       * fetch(url).then(res=>res.json()).then(data=>do work with data).catch((err)=> console.log(err)).finally()
+       * promise vs fetch --> promise is used to do asynchronous task whether fetch is used to get data from server or post data to server but fetch return a promise also.
+    
+    4. CRUD --> create,read,update,delete
+      * create(POST) --> fetch(url, {method: 'POST', body: JSON.stringify(data),headers:{'Content-type':'application/json'},}) --> to post /add data to server
+      * read(GET) --> fetch(url) => to get data from server and show it to user
+      * update(PUT/PATCH) --> fetch(url, {method: 'PUT', body: JSON.stringify(data),headers:{'Content-type':'application/json'},}) => to update the entire data.if the data is not there,then it will create one.have to be an id in the url like users/1 which specify the content
+      * update(PUT/PATCH) --> fetch(url, {method: 'PATCH', body: JSON.stringify(data),headers:{'Content-type':'application/json'},}) => to update the portion of data.have to be an id in the url like users/1 which specify the content
+      * delete(DELETE) --> fetch(url, {method: 'DELETE'}) => to delete data from database.have to be an id in the url like users/1 which specify the content
+      * here get,post,delete,put,patch is called HTTP method
+      * after do these methods, it return a promise which can be caught by .then(),.catch() and .finally()
+    
+    5. try-catch-finally
+      * try --> block of code where we can throw an error.if an error occurs in try block, it will be caught by catch block.
+      * catch --> block of code where we catch the error. it will be executed if an error occurs in try block.
+      * finally --> block of code which will always run whenever it gives an error or not
+      * throw new Error(err)
+        try{
+            // code that might throw an error
+            throw new Error('Some error occurred'); // optional
+        }catch(err){
+            // code to handle the error
+            console.log(err.message);
+        }finally{ // optional
+          // code to run no matter what
+            console.log('This code will always run');
+        }
+    
+    6. async await
+    async --> it is keyword that makes function asynchronous
+    await --> it is keyword that makes function wait until promise is resolved
+    * it is useful to fetch data from the server
+    * it is more efficient ways than fetch
+    * when you do asynchronous task one by one than we have to write callback function one into another which is look like a pyramid. this is called callback hell or pyramid of doom.
+    * to resolve callback hell, we can use async-await instead of fetch and .then() method
+    
+    async function test(p){
+        try{
+            let data = await fetch(p); // fetch data from server
+            let jsonData = await data.json(); // parse the response
+
+            do work like await and another
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+    test('https://jsonplaceholder.typicode.com/posts/1'); // calling the function with the url to fetch data from server
+
+*/
+
 
 
 
