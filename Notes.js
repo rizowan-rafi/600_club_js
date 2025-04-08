@@ -701,6 +701,24 @@ JSON FETCH PROMISE
 
 */
 
+/*
+Access Data
+1. how data come ::
+    * Array of Objects --> arrName[index].objKey or use loop to access all the data
+    * Array in Objects --> objName.arrKey[index].objKey 
+    * multi level nested Object --> obj1Key.obj2Key.boj3Key
+
+2.nullish coalescing and optional chaining
+    * optional chaining(?) --> objName?. or objName.key1?. use before dot notation.if the property is not exist then this option chaining will stop the process and return undefined else it will not do anything
+    * Nullish coalescing(??) --> varName/objKey ?? default value. if the variable or object property is null or undefined , then it will show the default value.
+    * OR operator(||) --> varName/objKey || default value. if the variable or object property is falsy value , then it will show the default value.
+    * we can use optional chaining and Nullish coalescing together.
+
+3. ++a/--a(pre),a++/a--(post),+=,-=,*=,/=,%=
+    &&=(Logical And) --> var/objKey &&= value. if if the variable or object property is truthy , then it will show the  value.else it shows variable or obj property value
+    ||=(Logical Or) --> var/objKey ||= value. if if the variable or object property is falsy , then it will show the  value.else it shows variable or obj property value
+*/
+
 
 
 
