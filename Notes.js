@@ -231,7 +231,7 @@ for (let s of s2) {
     const array_function_one_line = (parameter) => do work
     for object in one line
     const array_function_one_line = (parameter) =>({key: value}) have to use first bracket
-    // array function mostly use for callback and simple functions and array method like map and filter. it doesn't this keyword on it's own inherited from parent scope and also doesn't have argument or constructor
+    // array function mostly use for callback and simple functions and array method like map and filter. it doesn't have this keyword on it's own inherited from parent scope and also doesn't have argument or constructor
 
    
 
@@ -719,8 +719,157 @@ Access Data
     ||=(Logical Or) --> var/objKey ||= value. if if the variable or object property is falsy , then it will show the  value.else it shows variable or obj property value
 */
 
+/*
+Class ::
+1. class is template which is used to make same type of object.
+2. to build a class --> use class keyword like class className {}
+3. to create object we need constructor which is a method.constructor is similar to function.it can take parameter,default parameter or no parameter.
+    class className{
+        constructor(parameters){
+        
+        }
+    }
+4. to build a object we need to use new keyword like type objName = new className(parameters).new keyword indicates we need to create a new object.
+5. parameters is constructor is optional
+6. if the object has property we need this keyword inside parameter --> this.pName = pName.  we use the this keyword inside a constructor to refer to the current instance of the class being created.
+    class className{
+        constructor(parameters){
+        this.keyName = pName 
+        }
+    }
+7. instance --> instance means objects that is created by the class.we can check a object is an instance of a class or not by using --> object instanceof className
+8. if we want to add method(function) in object --> functionName(parameter){ do work }.don't add function keyword and write method outside and below the constructor.this type of method is called instance method.
+9. to access anything from the construction in method use this keyword 
+10. inheritance::
+    * parent child relation
+    * class childClass extend parentClass
+    * where there is many common properties and method in many class. we write a parent class which has all the common properties and method.then we inherit the parent class.the class which inherit parent class is called child class
+    * to call the parent class constructor --> super keyword
+11. Prototype Chain
+    * every object has a internal hidden link which connects it with other object which is called [[Prototype]]
+    * we can see the prototype using objName._proto_ or Object.getPrototype(objName)
+    * when we try to access any property or method in a object first it search in the object,if it doesn't find it in the object then it search in it's prototype,if it doesn't find it either then it goes upper prototype.this cycle continue until there is no prototype and it becomes null.this is prototype inheritance
+    * extends and super do the same thing.it set prototype of parent class in the child class prototype
+    * we can customize js build-in method on our own like in prototype there is a function called toString which declaring the object we can set toString as a method in object that it will call this method in object instead of the build in method
+    * */
+
+
+// class
+class Player {
+    constructor(name, team) {
+        this.name = name //this.name = name means: set the property name of the current object(sakib) to the name passed into the constructor.
+        this.team = team
+    }
+    getName() {
+        return this.name
+    }
+}
+
+class PlayerLife extends Player {
+    constructor(name, team, networth, favFood) {
+        super(name, team)
+        this.networth = networth
+        this.favFood = favFood
+    }
+}
+
+const sakib = new Player('Sakib Al Hasan', 'Bangladesh')
+// console.log(sakib.name)
+console.log(sakib)
+console.log(sakib instanceof Player)
+console.log(sakib.getName())
+
+const sakibLife = new PlayerLife('Sakib Al Hasan', 'Bangladesh', '100 millon', 'jani na')
+console.log(sakibLife)
 
 
 
+// prototype
+const mouse = {
+    name: 'hello mouse',
+    toString: function () { return `this is a ${this.name} function` }
+}
 
+console.log(Object.getPrototypeOf(mouse))
+console.log(mouse.toString())
 
+/*
+this keyword
+    * if we console.log(this) then it show a window object which is global object.global object is a object which holds all the global variable,function and properties.and also it holds how js will run.
+    * in object
+        # when we write a method in object, we can access the this keyword which indicates the whole object. as it indicate the whole object we can access any property using this.keyName from the method
+        # if we write method in arrow function then the this keyword inside the method indicates the global scope not the object block scope.so it will search outside the object not inside
+        
+    
+    * in class
+        # when we use this keyword in class it doesn't represent the class rather it represents the object that will be created by the class
+    
+    * normal function
+        # if we use this keyword in function this represents the global object
+    
+    * constructor function --> it before es6 when class keyword is not there
+        function Person(name){
+            this.name = name
+        }
+        const user = new Person('name')
+        console.log(user.name)
+    
+    * Event Listener
+        # in event-listener --> this keyword shows the element which will occurs the event like a button
+    * if we use "use strict" , then if we use this keyword in global scope/global object then it will be undefined.
+    
+    * if we want to set a method or function's this keyword value we can use
+        # obj1.methodName.bind(objName,p1,p2) --> use to bind your method's this into a another function
+        # obj1.methodName.call(objName,p1,p2) --> use to call direct the the method form another object method
+        # obj1.methodName.apply(objName,p1,p2) --> use to call direct the the method form another object method
+        
+    
+*/
+const student = {
+    name: 'rafi',
+    roll: `023`,
+    calling: function () {
+        return this
+    },
+    falling: function () {
+        return this.name
+    }
+}
+console.log(student.calling())
+console.log(student.falling())
+
+const teacher = {
+    name:'rahim'
+}
+const teacherName = student.calling.bind(teacher)
+console.log(teacherName().name)
+
+console.log(student.calling.call(teacher).name)
+console.log(student.calling.apply(teacher).name)
+
+/*
+closure::
+    * closure is a function defined in a function / the ability to access outer scope variable even after calling the function is called closure
+    * it is used for private variable and state management
+*/
+function taskTracker() {
+    let finishedTask = 0 // private variable
+    return function () { // state management
+        finishedTask++;
+        return finishedTask
+    }
+
+}
+
+const me = taskTracker()
+console.log(me())
+
+/*
+Hoisting --> uplifting.it will uplift the function and variable on the top of the code when call it
+    * in function with function keyword --> if we call the function before declare it .it will hoist the function on top so the the function will run
+    * but we use function expression or arrow function --> it will go to temporal dead zone(TDZ) and give reference error
+    * let and const --> same as arrow function.it will go to temporal dead zone and until initializing the let or const variable it will give reference error if we try to use it
+    * var --> for var it will give undefined
+    * Temporal Dead Zone --> when we declare a let or const variable but not initialize,the variable will hoist in a place which is called temporal dead zone
+    * 
+*/
