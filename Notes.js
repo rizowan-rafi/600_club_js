@@ -873,3 +873,45 @@ Hoisting --> uplifting.it will uplift the function and variable on the top of th
     * Temporal Dead Zone --> when we declare a let or const variable but not initialize,the variable will hoist in a place which is called temporal dead zone
     * 
 */
+
+/*
+JS Tricky Concept::
+    1. do-while loop --> first run the code(do) then check the condition(while) and repeat until the condition is false.but the loop run at least one time if the condition is false at first
+    do{
+        // code block
+    }while(condition)
+
+    2. switch case --> if we need to check one variable again and again using if-elseif-else,then we use switch case
+    const oneVariable = a;
+    switch(oneVariable){
+    case value1:
+        code block
+        break
+    case value2:
+        code block
+        break
+    default: // if none of the case is valid
+        code block
+    }
+    
+    3. eval(code in string) --> with the help of it we can change a code as we wish
+        with(objName){} --> we can set a scope for the objName object where we can access all it's property
+        both of them are not recommended to use and considered bad practice
+    
+    4. js use floating point arithmetic which convert decimal point to binary.
+        as a result sometime it gives unexpected value like .1+.2=.300000000000000004
+        to avoid this use .toFixed() or .toPrecision()
+    
+    5. IIFE --> immediately invoked function expression means the function will execute instantly after the declaring it.it is useful when we need to call a function only one time
+    (function(parameter){
+        // code block
+    })(argument)
+    if you use more than two iife function in your code use semicolon after each iife function
+
+    6. "use strict" is a keyword in js.which is use for make the code in strict mode which means
+        * you can't declare a variable without let or const(without type)
+        * can't use duplicate parameter
+        * in function if this keyword doesn't mean any object then it becomes undefined.
+        * can't use with keyword
+    
+*/
