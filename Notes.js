@@ -915,3 +915,53 @@ JS Tricky Concept::
         * can't use with keyword
     
 */
+
+/*
+DOM -- document object model
+    * when a html file load in browser,it convert all the html code into a js object which is called DOM
+    * document.getElementsByTagName('tagName') --> get all the elements of that tag name in a HTMLCollection(array like object)
+    * document.getElementById('IdName')--> get an element of that id
+    * document.getElementsByClassName('className') --> get all the elements of that class name in a HTMLCollection(array like object)
+    * document.querySelectorAll('.className'/'#idName') --> get all the elements of that class/id name in a NodeList(array like object)
+    * document.querySelector('.className'/'#idName') --> get the first element of that className/idName 
+*/
+
+/*
+* firstChild and childNodes like document.getElementById('IdName').firstChild or document.getElementById('IdName').childNodes
+* createElement('tagName'),innerText/innerHTML,querySelector,appendChild(child) 
+    const li = document.createElement('li')
+    li.innerText = 'hello'
+    const ul = document.querySelector('#ul')
+    ul.appendChild(li)
+* innerText return the text under the element and innerHTML return the elements under the element
+* web api --> some functionality that has in browser for web development
+    # DOM
+    # Local Storage
+    # Session Storage
+    # Fetch API
+    # History API
+* event --> button,onclick like <button onclick="functionName()">click me</button>
+
+
+*/
+
+/*
+how js code run --> parsing(abstract syntax tree) -> compilation -> jit compiler -> execution
+dev tool --> elements,console,sources,network,performance,application
+debug ::
+    * use console log around the error line
+    * breakpoint
+    * debugger
+    * callstack
+
+tips to debug::
+    * read the error message and try to understand
+    * isolate the problem part from the code
+    * test in small part
+    * use tools like devTools,Breakpoint and callStack
+    * read documentation
+
+compiler --> convert the whole code into machine code and then run the code
+interpreter --> it coverts the code into machine line by line and run the line immediately
+*/
+
